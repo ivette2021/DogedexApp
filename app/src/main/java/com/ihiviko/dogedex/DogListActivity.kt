@@ -2,13 +2,18 @@ package com.ihiviko.dogedex
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ihiviko.dogedex.databinding.ActivityDogListBinding
 
 class DogListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val binding = ActivityDogListBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_dog_list)
+
+        val dogList = getFakeDogs()
+        val recycler = binding.dogRecycler
     }
-    private fun getfakeDogs(): MutableList<Dog> {
+    private fun getFakeDogs(): MutableList<Dog> {
         val dogList = mutableListOf<Dog>()
         dogList.add(Dog(1,1,"Chiguagua", "Toy", 5.4,
             6.7,"","12 - 15","",10.5, 12.3))
