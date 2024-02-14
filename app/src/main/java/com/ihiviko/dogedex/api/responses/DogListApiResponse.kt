@@ -1,6 +1,5 @@
-package com.ihiviko.dogedex.responses
+package com.ihiviko.dogedex.api.responses
 
-import com.ihiviko.dogedex.DogListResponse
 import com.squareup.moshi.Json
 
 class DogListApiResponse (

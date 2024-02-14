@@ -1,10 +1,11 @@
-package com.ihiviko.dogedex
+package com.ihiviko.dogedex.doglist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.ihiviko.dogedex.Dog
 import com.ihiviko.dogedex.databinding.DogListItemBinding
 
 
@@ -37,7 +38,7 @@ class DogAdapter : ListAdapter<Dog, DogAdapter.DogViewHolder>(DiffCallback) {
     inner class DogViewHolder(private val binding: DogListItemBinding): RecyclerView.ViewHolder(binding.root){
 
         //pintamos la vista
-        fun bind(dog:Dog){
+        fun bind(dog: Dog){
             binding.dogName.text = dog.name //texto seteado xml no esta texto asociado
         }
     }

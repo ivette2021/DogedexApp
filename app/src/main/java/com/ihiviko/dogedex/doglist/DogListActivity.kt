@@ -4,10 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ihiviko.dogedex.Dog
-import com.ihiviko.dogedex.DogAdapter
-import com.ihiviko.dogedex.DogListViewModel
-import com.ihiviko.dogedex.R
 import com.ihiviko.dogedex.databinding.ActivityDogListBinding
 
 class DogListActivity : AppCompatActivity() {
