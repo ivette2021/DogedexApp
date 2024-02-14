@@ -1,9 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Dogedex" parent="Theme.Material3.DayNight.NoActionBar">
+<!--    <style name="Base.Theme.Dogedex" parent="Theme.Material3.DayNight.NoActionBar">-->
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
 
-    <style name="Theme.Dogedex" parent="Base.Theme.Dogedex" />
+    <style name="Theme.Dogedex" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/rosa</item>
+        <item name="colorPrimaryVariant">@color/coral</item>
+        <item name="colorOnPrimary">@color/piel_c</item>
+        <!--  Secondary brand color.  -->
+        <item name="colorSecondary">@color/azul_d</item>
+        <item name="colorSecondaryVariant">@color/azul_c_2</item>
+        <item name="colorOnSecondary">@color/azul_o</item>
+        <!--  Status bar color.  -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!--  Customize your theme here.  -->
+    </style>
+    <style name="DetailSectionName">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/azul_d</item>
+    </style>
+    <style name="DetailSectionInfo">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/azul_o</item>
+    </style>
 </resources>
