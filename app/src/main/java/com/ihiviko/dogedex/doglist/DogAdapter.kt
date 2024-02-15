@@ -24,6 +24,11 @@ class DogAdapter : ListAdapter<Dog, DogAdapter.DogViewHolder>(DiffCallback) {
         //-----------------------------------------------------------------------
     }
 
+    private var onItemClickListener: ((Dog) -> Unit)? = null
+    fun setOnItemClickListener(onItemClickListener: (Dog) -> Unit){
+        this.onItemClickListener = onItemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {
         val binding = DogListItemBinding.inflate(LayoutInflater.from(parent.context)) //inflamos la vista
        return DogViewHolder(binding)
@@ -40,6 +45,9 @@ class DogAdapter : ListAdapter<Dog, DogAdapter.DogViewHolder>(DiffCallback) {
         //pintamos la vista
         fun bind(dog: Dog){
             binding.dogName.text = dog.name //texto seteado xml no esta texto asociado
+            binding.dogName.setOnClickListener {
+                onItemClickListener?.invoke(dog) //decimos que puede ser nullable
+            }
         }
     }
 }
