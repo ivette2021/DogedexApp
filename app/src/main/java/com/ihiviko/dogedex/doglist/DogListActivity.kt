@@ -4,8 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telecom.Call.Details
+import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ihiviko.dogedex.api.responses.ApiResponseStatus
 import com.ihiviko.dogedex.databinding.ActivityDogListBinding
 import com.ihiviko.dogedex.dogdetail.DogDetailActivity
 import com.ihiviko.dogedex.dogdetail.DogDetailActivity.Companion.DOG_KEY
@@ -18,6 +21,8 @@ class DogListActivity : AppCompatActivity() {
         val binding = ActivityDogListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val loadingWheel = binding.loadingWheel
+
         val recycler = binding.dogRecycler
         recycler.layoutManager = LinearLayoutManager(this)
         val adapter = DogAdapter()
@@ -25,16 +30,38 @@ class DogListActivity : AppCompatActivity() {
         adapter.setOnItemClickListener {
             //pasar el dog a DogDetailActivity el objeto debe ser parcelable para pasar entre activity
             val intent = Intent(this, DogDetailActivity::class.java)
-            intent.putExtra(DOG_KEY,it)
+            intent.putExtra(DOG_KEY, it)
             startActivity(intent)
         }
 
         recycler.adapter = adapter
 
 
-        dogListViewModel.dogList.observe(this){
-            dogList ->
+        dogListViewModel.dogList.observe(this) { dogList ->
             adapter.submitList(dogList)
+        }
+        dogListViewModel.status.observe(this) { status ->
+            when (status) {
+                ApiResponseStatus.LOADING -> {
+                    //mostraremos el progressbar
+                    loadingWheel.visibility = View.VISIBLE
+                }
+
+                ApiResponseStatus.ERROR -> {
+                    //ocultar el progressbar
+                    loadingWheel.visibility = View.GONE
+                    Toast.makeText(this, "Error al descargar datos", Toast.LENGTH_SHORT).show()
+                }
+                ApiResponseStatus.SUCCESS ->{
+                    //ocultar el progressbar
+                    loadingWheel.visibility = View.GONE
+                }
+                else -> {
+                    //ocultar el progressbar
+                    loadingWheel.visibility = View.GONE
+                    Toast.makeText(this, "Status desconocido", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }
