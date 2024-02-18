@@ -7,12 +7,14 @@ import android.telecom.Call.Details
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ihiviko.dogedex.api.responses.ApiResponseStatus
 import com.ihiviko.dogedex.databinding.ActivityDogListBinding
 import com.ihiviko.dogedex.dogdetail.DogDetailActivity
 import com.ihiviko.dogedex.dogdetail.DogDetailActivity.Companion.DOG_KEY
 
+private const val GRID_SPAIN_COUNT = 3
 class DogListActivity : AppCompatActivity() {
 
     private val dogListViewModel: DogListViewModel by viewModels() //instaciamos el vm
@@ -24,7 +26,7 @@ class DogListActivity : AppCompatActivity() {
         val loadingWheel = binding.loadingWheel
 
         val recycler = binding.dogRecycler
-        recycler.layoutManager = LinearLayoutManager(this)
+        recycler.layoutManager = GridLayoutManager(this, GRID_SPAIN_COUNT)
         val adapter = DogAdapter()
 
         adapter.setOnItemClickListener {

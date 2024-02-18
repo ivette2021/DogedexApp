@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.ihiviko.dogedex.Dog
 import com.ihiviko.dogedex.databinding.DogListItemBinding
 
@@ -44,10 +45,11 @@ class DogAdapter : ListAdapter<Dog, DogAdapter.DogViewHolder>(DiffCallback) {
 
         //pintamos la vista
         fun bind(dog: Dog){
-            binding.dogName.text = dog.name //texto seteado xml no esta texto asociado
-            binding.dogName.setOnClickListener {
+          //  binding.dogName.text = dog.name //texto seteado xml no esta texto asociado
+            binding.dogListItemLayout.setOnClickListener {
                 onItemClickListener?.invoke(dog) //decimos que puede ser nullable
             }
+            binding.dogImage.load(dog.imageUrl)
         }
     }
 }

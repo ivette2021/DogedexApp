@@ -1,5 +1,6 @@
 package com.ihiviko.dogedex.doglist
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,6 +28,7 @@ class DogListViewModel : ViewModel() {
         downloadDogs()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun downloadDogs() {
         viewModelScope.launch {
             _status.value = ApiResponseStatus.Loading()

@@ -3,6 +3,7 @@ package com.ihiviko.dogedex.dogdetail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import coil.load
 import com.ihiviko.dogedex.Dog
 import com.ihiviko.dogedex.R
 import com.ihiviko.dogedex.databinding.ActivityDogDetailBinding
@@ -28,5 +29,10 @@ class DogDetailActivity : AppCompatActivity() {
         binding.dogIndex.text = getString(R.string.dog_index_format, dog.index)
         binding.lifeExpectancy.text = getString(R.string.dog_life_expectancy_format, dog.lifeExpectancy)
         binding.dog = dog
+        //llamar la imagen con Coil
+        binding.dogImage.load(dog.imageUrl)
+        binding.closeButton.setOnClickListener {
+            finish()//cierra la pantalla
+        }
     }
 }
